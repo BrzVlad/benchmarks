@@ -34,6 +34,11 @@ public class Person
     }
 }
 
+[JsonSerializable(typeof(Person))]
+internal partial class AppJsonSerializerContext : JsonSerializerContext
+{
+}
+
 public class Program {
 
     public static void Main(string[] args)
@@ -41,8 +46,8 @@ public class Program {
         Person smallOrgChart = Person.GenerateOrgChart(2, 4);
         Person result = null;
         for (int i = 0; i < 10000; i++) {
-            string serialized = JsonSerializer.Serialize(smallOrgChart);
-            result = JsonSerializer.Deserialize<Person>(serialized);
+            string serialized = JsonSerializer.Serialize(smallOrgChart, AppJsonSerializerContext.Default.Person);
+            result = JsonSerializer.Deserialize(serialized, AppJsonSerializerContext.Default.Person);
         }
         Console.WriteLine (result.Name);
     }

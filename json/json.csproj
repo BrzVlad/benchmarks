@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <UseSizeOptimizedLinq>true</UseSizeOptimizedLinq>
     <SelfContained>true</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
     <PublishReadyToRunComposite>true</PublishReadyToRunComposite>
